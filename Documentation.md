@@ -24,6 +24,25 @@ Ye rahi NF-1 ki poori keyword list jo Python aur HTML se bhi aasan hai:
 | `fix` | **Logic Gate** | Condition check karne ke liye (`if` ki jagah). |
 | `run` | **Loop** | Kisi bhi kaam ko baar-baar repeat karne ke liye. |
 | `|>` | **Terminator** | Har command ki line ko khatam karne wala symbol. |
+# 🧠 NF-1: NEURAL-CORE & MACHINE LEARNING SYMBOLS (v2.0)
+
+| Symbol | Technical Name | Function (Machine Learning Yogdan) | Example Usage |
+| :--- | :--- | :--- | :--- |
+| `brain.init` | **Neural Bootstrap** | NF-1 ke Neural Engine aur RAM memory ko allocate karna. | `brain.init(Core_1) |>` |
+| `sense.raw` | **Data Acquisition** | Raw sensor data aur camera stream ko AI-ready tensors mein badalna. | `sense.raw(cam) -> data |>` |
+| `@neural` | **Synapse Link** | Do alag data points ke beech "Logical Connection" ya neurons banana. | `@neural(A + B) |>` |
+| `deep.sync` | **Hidden Layer** | Multi-layer processing (Deep Learning) ko system mein active karna. | `deep.sync(128_layers) |>` |
+| `learn.pat` | **Pattern Train** | Input data se patterns seekhna aur model ko optimize karna. | `learn.pat(data) -> M1 |>` |
+| `guess.acc` | **Inference Engine** | 99% accuracy ke saath prediction aur result generate karna. | `guess.acc(M1) >> result |>` |
+| `auto.fix` | **Self-Correction** | AI dwara code ki errors ko real-time mein scan aur repair karna. | `auto.fix(level_Max) |>` |
+| `#vision.X` | **Object Extract** | Video ya photo mein se Face, Object ya Text ko pehchanna. | `#vision.X("Human") |>` |
+| `vocal.gen` | **NLP Synthesis** | AI ko natural language mein bolne aur samajhne ki power dena. | `vocal.gen << "Online" |>` |
+| `*ghost.ai` | **Neural Stealth** | AI model ko hacking aur data leak se bachane ke liye encrypt karna. | `*ghost.ai(secure) |>` |
+| `evolve` | **Genetic Logic** | Code ko waqt ke saath khud ko "Update" aur "Smart" banane ki power. | `evolve.code(24h_cycle) |>` |
+| `@core.boost` | **NPU Accelerator** | System ke CPU aur RAM ko puri tarah AI processing par shift karna. | `@core.boost(Turbo) |>` |
+
+---
+> **Note:** NF-1 Machine Learning framework is optimized for low-resource hardware (Resource-Zero Engineering).
 
 ---
 
