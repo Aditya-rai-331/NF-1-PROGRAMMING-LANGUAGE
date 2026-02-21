@@ -46,3 +46,4 @@ I am a 9th-grade developer passionate about **Ethical Hacking, Cybersecurity, an
 
 > "Dimaag mein processor hona chahiye, machine mein nahi." - Aditya Rai
 > 
+https://www.producthunt.com/products/nf-1-neural-foundation-language?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-nf-1-neural-foundation-language
