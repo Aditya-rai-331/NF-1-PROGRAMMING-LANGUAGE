@@ -51,3 +51,4 @@ https://www.producthunt.com/products/nf-1-neural-foundation-language?embed=true&
 https://www.producthunt.com/products/nf-1-neural-foundation-language?launch=nf-1-neural-foundation-language
 https://hashnode.com/@aditya-331
 https://dev.to/aditya_rai_2f211fe3d3a90f/nf-1-how-i-built-a-resource-zero-programming-language-for-low-end-hardware-at-age-14-56li
+ my LinkedIn post: https://www.linkedin.com/posts/aditya-rai-566b323b2_programming-techinnovatation-madeinindia-activity-7431671428653043712-BzVB
