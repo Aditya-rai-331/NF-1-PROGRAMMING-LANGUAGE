@@ -8,7 +8,14 @@ A Resource-Efficient Programming Language for Hardware Control and Machine Learn
 **License:** MIT (Open Source)
 
 ---
+# 🚀 NF-1: Nano Flash-1 
+**The World's First Resource-Adaptive Programming Language**
 
+![Version](https://img.shields.io/badge/version-2.0-blue)
+![Creator](https://img.shields.io/badge/Creator-Aditya%20Rai-orange)
+
+> "Logic on paper, code for the future."
+> 
 ## 🌟 Vision
 NF-1 was born out of a challenge: **How to code without a machine?** Designed on paper with logic-first principles, NF-1 is built for high-performance execution on low-resource hardware (like old PC hardware, set-top boxes, and legacy mobile devices).
 
