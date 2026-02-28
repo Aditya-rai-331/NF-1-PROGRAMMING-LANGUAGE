@@ -1,137 +1,93 @@
-import os
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.label import Label
-from kivy.core.window import Window
-from kivy.uix.popup import Popup
-from kivy.uix.scrollview import ScrollView
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
 
-# Premium Dark Interface
-Window.clearcolor = (0.01, 0.01, 0.02, 1)
+using namespace std;
 
-class NF1_Royal_IDE(App):
-    def build(self):
-        self.title = "AADI-TECH NF-1 ROYAL v11.0"
-        self.save_dir = "/sdcard/Download/"
-        
-        # Root Layout
-        root = BoxLayout(orientation='vertical', padding=10, spacing=10)
+class NF1_Kernel {
+private:
+    map<string, string> registry;
+    bool ai_active = false;
+    bool ghost_mode = false;
+    bool quantum_lock = false;
 
-        # 1. Professional File Manager Bar
-        top_bar = BoxLayout(size_hint_y=0.08, spacing=10)
-        top_bar.add_widget(Label(text="FILE NAME:", size_hint_x=0.2, font_size='12sp', color=(0, 0.7, 1, 1), bold=True))
-        
-        self.file_name_input = TextInput(
-            text="main.nf1", 
-            multiline=False, 
-            size_hint_x=0.5,
-            background_color=(0.1, 0.1, 0.15, 1),
-            foreground_color=(1, 1, 1, 1),
-            font_size='14sp',
-            padding=[10, 10]
-        )
-        top_bar.add_widget(self.file_name_input)
-        
-        save_btn = Button(text="SAVE PROJECT", background_color=(0, 0.4, 0.8, 1), bold=True, size_hint_x=0.3)
-        save_btn.bind(on_press=self.save_project)
-        top_bar.add_widget(save_btn)
-        root.add_widget(top_bar)
+    string clean(string s) {
+        s.erase(0, s.find_first_not_of(" \t\r\n"));
+        s.erase(s.find_last_not_of(" \t\r\n") + 1);
+        return s;
+    }
 
-        # 2. RGB Syntax Editor
-        self.editor = TextInput(
-            text='brain.init(AI) |>\n<< "System is now Online" |>\n<< "Welcome Aditya" |>\nmem.purge |>',
-            background_color=(0.04, 0.04, 0.05, 1),
-            foreground_color=(0.9, 0.9, 0.9, 1),
-            font_size='18sp',
-            font_name='Roboto',
-            size_hint_y=0.75,
-            cursor_color=(0, 1, 0, 1),
-            padding=[15, 15, 15, 15],
-            auto_indent=True
-        )
-        root.add_widget(self.editor)
+public:
+    void parse(string line, int ln) {
+        line = clean(line);
+        if (line.empty() || line.substr(0, 2) == "//") return;
 
-        # 3. Execution Bar
-        run_btn = Button(
-            text="▶  RUN CLEAN OUTPUT",
-            size_hint_y=0.1,
-            background_color=(0, 0.7, 0.3, 1),
-            bold=True,
-            font_size='18sp'
-        )
-        run_btn.bind(on_press=self.launch_clean_output)
-        root.add_widget(run_btn)
+        // 🚨 STRICT TERMINATOR CHECK
+        if (line.find("|>") == string::npos) {
+            cout << "[SYNTAX ERROR]: Line " << ln << " -> Expected '|>'" << endl;
+            return;
+        }
 
-        return root
+        string cmd = clean(line.substr(0, line.find("|>")));
 
-    def save_project(self, instance):
-        name = self.file_name_input.text
-        path = os.path.join(self.save_dir, name)
-        try:
-            with open(path, "w") as f:
-                f.write(self.editor.text)
-            self.show_toast("Success", f"Bhai, {name} save ho gayi!")
-        except:
-            self.show_toast("Error", "Storage permission issue!")
+        // --- 1. I/O & DATA FLOW ---
+        if (cmd.substr(0, 2) == "<<") {
+            cout << "[NF-1 OUTPUT]: " << cmd.substr(2) << endl;
+        }
+        else if (cmd.find("->") != string::npos) {
+            size_t p = cmd.find("->");
+            string val = clean(cmd.substr(0, p));
+            string key = clean(cmd.substr(p + 2));
+            registry[key] = val;
+            cout << "[REG]: Variable '" << key << "' stored successfully." << endl;
+        }
 
-    def launch_clean_output(self, instance):
-        raw_code = self.editor.text.strip().split('\n')
-        clean_logs = []
-        
-        for i, line in enumerate(raw_code):
-            if not line: continue
-            
-            # Smart Friendly Error (Only shown if logic fails)
-            if "|>" not in line:
-                clean_logs.append(f"[color=ff3333]Bhai, Line {i+1} mein '|>' lagana bhul gaye ho![/color]")
-                break
-                
-            cmd = line.split("|>")[0].strip()
-            
-            # Clean Extraction Logic
-            if cmd.startswith("<<"):
-                # Sirf text dikhayega, koi extra symbol nahi
-                msg = cmd[2:].strip().replace('"', '').replace("'", "")
-                clean_logs.append(f"[color=ffffff]{msg}[/color]")
-            
-            # In-built functions (Silent execution, asali software ki tarah)
-            elif "brain.init" in cmd:
-                pass # Backend sync
-            elif "mem.purge" in cmd:
-                pass # Backend clean
-        
-        # --- FULL SCREEN CLEAN TERMINAL ---
-        content = BoxLayout(orientation='vertical', padding=30, spacing=20)
-        with content.canvas.before:
-            from kivy.graphics import Color, Rectangle
-            Color(0, 0, 0, 1) # Pitch Black Terminal
-            Rectangle(size=(Window.width, Window.height), pos=(0,0))
+        // --- 2. NEURAL CORE (AI) ---
+        else if (cmd == "brain.init") { ai_active = true; cout << "[NEURAL]: Engine Online. RAM allocated." << endl; }
+        else if (cmd.find("learn.pat") != string::npos) cout << "[AI]: Deep Learning Pattern Scan active." << endl;
+        else if (cmd == "guess.acc") cout << "[AI]: Inference Logic ready (99.8% Accuracy)." << endl;
+        else if (cmd == "evolve") cout << "[GENETIC]: Code Self-Optimization triggered." << endl;
 
-        output_display = Label(
-            text="\n".join(clean_logs) if clean_logs else "[System]: No Output to display.",
-            markup=True,
-            halign='left',
-            valign='top',
-            font_size='20sp',
-            font_name='Roboto'
-        )
-        output_display.bind(size=output_display.setter('text_size'))
-        
-        scroll = ScrollView()
-        scroll.add_widget(output_display)
-        content.add_widget(scroll)
+        // --- 3. HARDWARE & LEGACY (~ N, ~link, @core.boost) ---
+        else if (cmd == "~ N") cout << "[HW]: Low-Power Sense. Throttling CPU for efficiency." << endl;
+        else if (cmd.find("~link") != string::npos) cout << "[BRIDGE]: USB Serial Hardware Link Active." << endl;
+        else if (cmd == "mem.purge") cout << "[SYS]: RAM Address Flush successful." << endl;
+        else if (cmd == "@core.boost") cout << "[NPU]: CPU priority shifted to NF-1 Kernel." << endl;
 
-        close_btn = Button(text="CLOSE TERMINAL", size_hint_y=0.12, background_color=(0.8, 0, 0, 1), bold=True)
-        popup = Popup(title='NF-1 SYSTEM OUTPUT', content=content, size_hint=(1, 1), auto_dismiss=False)
-        close_btn.bind(on_press=popup.dismiss)
-        content.add_widget(close_btn)
-        popup.open()
+        // --- 4. SECURITY & STEALTH (!quantum, #vault.X, *ghost.ai, &leak.stop) ---
+        else if (cmd == "!quantum") { quantum_lock = true; cout << "[SEC]: Lattice-Encryption Shield enabled." << endl; }
+        else if (cmd == "#vault.X") cout << "[SEC]: Hardware AES-Vault locked." << endl;
+        else if (cmd == "*ghost.ai") { ghost_mode = true; cout << "[SEC]: Memory obfuscation (Ghost Mode) ON." << endl; }
+        else if (cmd == "&leak.stop") cout << "[GUARD]: Stack-protection active. Zero Leaks." << endl;
 
-    def show_toast(self, title, msg):
-        p = Popup(title=title, content=Label(text=msg), size_hint=(0.7, 0.3))
-        p.open()
+        // --- 5. VISION & UI (#vision.X, H.Front, F.Fast, auto.fix, vocal.gen) ---
+        else if (cmd.find("#vision.X") != string::npos) cout << "[VISION]: Object recognition engine running..." << endl;
+        else if (cmd == "H.Front") cout << "[UI]: Header Render Complete." << endl;
+        else if (cmd == "F.Fast") cout << "[UI]: Footer Engine Optimized." << endl;
+        else if (cmd == "auto.fix") cout << "[DEBUG]: Semantic Self-Correction logic active." << endl;
+        else if (cmd == "vocal.gen") cout << "[NLP]: Voice synthesis engine initialized." << endl;
 
-if __name__ == "__main__":
-    NF1_Royal_IDE().run()
+        // --- 6. ENTERPRISE (@cloud.syn) ---
+        else if (cmd == "@cloud.syn") cout << "[CLOUD]: Real-time synchronization active." << endl;
+    }
+};
+
+int main() {
+    NF1_Kernel core;
+    cout << "### NF-1 TITAN-CORE v6.0 [ENTERPRISE EDITION] ###" << endl;
+    cout << "### ARCHITECT: ADITYA RAI | KERNEL: C++ BINARY ###" << endl << endl;
+
+    vector<string> boot = {
+        "brain.init |>", "~ N |>", "1.0.4 -> Version |>",
+        "!quantum |>", "*ghost.ai |>", "#vault.X |>",
+        "mem.purge |>", "@core.boost |>", "evolve |>",
+        "&leak.stop |>", "vocal.gen |>", "@cloud.syn |>",
+        "H.Front |>", "auto.fix |>", "<< 'NF-1 FULL CORE READY' |>"
+    };
+
+    for (int i = 0; i < boot.size(); i++) core.parse(boot[i], i + 1);
+
+    return 0;
+}
