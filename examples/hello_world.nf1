@@ -1,0 +1,7 @@
+// NF-1 Standard Library v7.5
+// Creator: Aditya Rai (Aadi-Tech)
+
+brain.init |>            // Dimag (Processor) ko active karo
+<< 'Hello World' |>      // Screen par output dikhao
+mem.purge |>             // Kaam khatam, RAM saaf karo
+exit |>                  // Program band karo
