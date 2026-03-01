@@ -115,6 +115,9 @@ auto.fix |>          // Self-correcting syntax logic
 vault.lock |>        // Encrypt the variable in RAM
 << UserName |>       // Securely display the data
 >>
+>> https://github.com/Aditya-rai-331/NF-1-PROGRAMMING-LANGUAGE/commit/79e7b9f6de6f56fc8352f41da7370975efc2b124
+>> https://github.com/Aditya-rai-331/NF-1-PROGRAMMING-LANGUAGE/tree/main/example
+>> 
 >> 
 ## 🤝 Connect with Me
 I am a 9th-grade developer passionate about **Ethical Hacking, Cybersecurity, and Language Design.** * **Project Goal:** To make coding accessible on any device, regardless of its age or power.
