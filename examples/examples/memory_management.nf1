@@ -1,0 +1,11 @@
+// Requesting Identity Logic
+brain.init |>
+
+<< 'Enter Your Name: ' |> 
+>> UserName |>            // User se input lo
+
+<< 'Welcome to Aadi-Tech, ' |>
+<< UserName |>            // Naam print karo
+
+mem.purge |>
+
