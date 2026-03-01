@@ -16,11 +16,7 @@ Developer: Aditya Rai (Aadi-Tech) | Architecture: Hybrid Bytecode Virtual Machin
 | Diagnostic     | snap.sys     | System Snapshot   | Hardware aur state ka binary log banata hai.   |
 | Optimizer      | res.sync     | Resource Sync     | Background tasks ko CPU threads se sync karta hai|
 | Hardware       | @core.boost  | Priority Shift    | Thread ko High-Performance mode mein dalta hai. |
-| Hardware       | ~ N          | Hardware Sense    | Battery/RAM ke hisab se auto-optimize karta hai|
 | Cleanup        | mem.purge    | RAM Purge         | Junk saaf karke 0B Memory Leak maintain krta hai|
-| Security       | #vault.X     | Data Shield       | AES-style logic se data ko encrypt karta hai.  |
-| Security       | !quantum     | Quantum Flag      | Post-Quantum crypto protocols activate krta hai|
-| Security       | &leak.stop   | Exploit Guard     | Buffer overflow aur memory leaks ko rokta hai. |
 | Terminator     | |>           | End-of-Line       | Current instruction ko terminate karta hai.    |
 | Exit           | exit         | Safe Halt         | Shutdown karke resources release karta hai.    |
 
