@@ -105,6 +105,7 @@ NF-1 is a hardware-aware, high-performance programming language designed by **Ad
 
 **Developer:** [Aditya Rai](https://sites.google.com/view/aadi-tech/home)  
 **Status:** Active Development (2026)
+
 !quantum |>          // Activate Lattice-Shielding
 *ghost.ai |>         // Mask memory address
 scan.pattern |>      // Analyze incoming data strings
