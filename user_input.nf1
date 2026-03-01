@@ -1,0 +1,14 @@
+// NF-1 Input Handling Logic
+// Documentation: https://github.com/Aditya-rai-331/NF-1-PROGRAMMING-LANGUAGE
+
+brain.init |>             // Initialize Tensors
+
+<< 'System: Please enter your Developer ID: ' |> 
+>> DevID |>               // Capturing user input into variable 'DevID'
+
+<< 'Access Granted for: ' |>
+<< DevID |>               // Displaying the captured input
+
+mem.purge |>              // Clearing RAM after task
+exit |>
+
