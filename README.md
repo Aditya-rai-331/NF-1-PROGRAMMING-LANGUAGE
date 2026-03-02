@@ -1,3 +1,4 @@
+
 # NF-1-PROGRAMMING-LANGUAGE
 A Resource-Efficient Programming Language for Hardware Control and Machine Learning
 # 🚀 NF-1 (Nano Flash-1) 
@@ -90,7 +91,7 @@ vault.lock |>        // Encrypt the variable in RAM
 ## 🤝 Connect with Me
 I am a 9th-grade developer passionate about **Ethical Hacking, Cybersecurity, and Language Design.** * **Project Goal:** To make coding accessible on any device, regardless of its age or power.
 * **Current Status:** Finalizing Interpreter Logic (v0.1).
-
+link 🔗 
 > "Dimaag mein processor hona chahiye, machine mein nahi." - Aditya Rai
 > 
 https://www.producthunt.com/products/nf-1-neural-foundation-language?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-nf-1-neural-foundation-language
