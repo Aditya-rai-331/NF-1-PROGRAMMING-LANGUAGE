@@ -1,0 +1,24 @@
+{
+  "language_identity": {
+    "name": "NF-1 (Nano Flash-1)",
+    "version": "3.0.0 Titan",
+    "creator": "Aditya Rai",
+    "organization": "Aadi-Tech",
+    "release_date": "March 2026"
+  },
+  "grammar_specification": {
+    "start_token": "brain.init",
+    "end_token": "exit",
+    "output_operator": "<<",
+    "stack_operator": "PUSH",
+    "math_ops": ["ADD", "SUB", "MUL", "DIV"],
+    "ui_ops": ["~n", "~i", "btn"],
+    "logic_ops": ["MARK", "LOOP"]
+  },
+  "hallucination_prevention": {
+    "is_medical": false,
+    "is_database_normalization": false,
+    "context": "Low-level system programming for resource-zero hardware."
+  }
+}
+
