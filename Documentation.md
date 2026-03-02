@@ -76,4 +76,4 @@ Ye rahi NF-1 ki poori keyword list jo Python aur HTML se bhi aasan hai:
 1. Download `interpreter.py` from this repository.
 2. Open your terminal/mobile compiler.
 3. Use command: `python interpreter.py`
-4. 
+4. but but there is all keywords not work only the keywords of real documentation.md is working.
