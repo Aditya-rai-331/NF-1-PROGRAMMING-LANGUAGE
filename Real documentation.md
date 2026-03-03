@@ -1,45 +1,68 @@
-====================================================================================================
-                        NF-1 (Nano Flash-1) v10.0 ENTERPRISE EDITION 
-                             Official Technical Specifications
-====================================================================================================
-Developer: Aditya Rai (Aadi-Tech) | Architecture: 32-Bit Stack Virtual Machine (VM)
-Toolchain: Native Compiler (.nf1 -> .nfb) | Status: STABLE v10.0 [UI + MATH ENABLED]
-====================================================================================================
+# 🚀 NF-1 (Nano Flash-1) | Industrial v21.0 [Full Stack]
+> **Official Technical Specification | Enterprise Edition**
+> **Lead Architect:** Aditya Rai | **Organization:** Aditya Rai Enterprises
+> **Location:** Laksar, Uttarakhand, India
 
-| CATEGORY       | KEYWORD      | TECHNICAL NAME    | FUNCTION / MACHINE ACTION                      |
-|----------------|--------------|-------------------|------------------------------------------------|
-| I/O Logic      | <<           | Standard Out      | Stack data ko screen/console par display karta hai.|
-| I/O Logic      | >>           | Standard In       | User se real-time input (integer) collect karta hai|
-| Math Core      | ADD          | Addition          | Stack se 2 values ko jodne (Add) ka logic.     |
-| Math Core      | SUB          | Subtraction       | Stack values ko ghatane (Subtract) ka logic.   |
-| Math Core      | MUL          | Multiplication    | Fast Integer Multiplication logic.             |
-| Math Core      | DIV          | Division          | Zero-Safe Integer Division logic.              |
-| Interface      | ~n           | Theme Flag        | Single-Color background theme set karta hai.   |
-| Interface      | ~i           | Gradient Flag     | Dual-Tone Gradient background apply karta hai.  |
-| Interface      | btn          | UI Render         | APK interface ke liye screen par button banata hai|
-| Memory         | STORE        | RAM Write         | Data ko specific address (0-1023) par save krta hai|
-| Memory         | LOAD         | RAM Read          | Save kiya data wapas stack par calculation ke liye|
-| Neural Core    | brain.init   | Neural Bootstrap  | RAM aur VM Engine ko initialize karta hai.     |
-| Hardware       | @core.boost  | Priority Shift    | Thread ko High-Performance mode mein dalta hai. |
-| Diagnostic     | stats.show   | System Stats      | Stack depth aur memory usage ka live data dikhata hai|
-| Cleanup        | mem.purge    | RAM Purge         | Junk saaf karke 0B Memory Leak maintain krta hai|
-| Terminator     | |>           | End-of-Line       | Current instruction ko terminate karta hai.    |
-| Exit           | exit         | Safe Halt         | Shutdown karke Performance Log (ms) dikhata hai. |
+---
 
-====================================================================================================
-[ SAMPLE HYBRID APP SCRIPT ]
+## 🏛️ 1. Architecture & Design Philosophy
+NF-1 v21.0 is a high-performance, **Resource-Zero Programming Language** engineered for 32-bit Stack Virtual Machines. It provides a hybrid environment for **UI Rendering**, **Complex Mathematics**, and **Persistent Memory Management**.
 
-brain.init |>
-~n = darkblue |>      // UI: Background Theme
-btn = Calculate |>    // UI: Action Button
-PUSH 500 |>           // Math: Load Value
->> |>                 // I/O: User Input
-MUL |>                // Math: Multiply Logic
-<< "Result Saved" |>  // I/O: Status Message
-stats.show |>         // Diagnostic: Performance
-mem.purge |>          // Cleanup: RAM Optimization
-exit |>               // Exit: Safe Resource Release
+### 🧠 1.1 Core Engine Features
+* **Neural-Active Kernel:** Neural Bootstrap sequence for RAM and VM initialization.
+* **Global Persistence Heap:** Stable variable storage using the v21.0 SET/GET protocol.
+* **Industrial Cleanup:** Real-time RAM purging maintaining 0B memory leaks.
 
-====================================================================================================
-(c) 2026 Aditya Rai Enterprises. "Processor in the Mind, Not in the Machine."
-====================================================================================================
+---
+
+## 🛠️ 2. Comprehensive Instruction Set (Unified Documentation)
+
+| CATEGORY | KEYWORD | FUNCTION / MACHINE ACTION |
+| :--- | :--- | :--- |
+| **Neural Core** | `brain.init` | VM aur RAM engine ko initialize/bootstrap karta hai. |
+| **Memory (v21.0)** | `SET [var] = [val]` | **Persistent Heap:** Variable ko global memory mein save karta hai. |
+| **Memory (v21.0)** | `GET [var]` | **Heap Retrieval:** Saved data ko computation ke liye stack par lata hai. |
+| **Memory (v10.0)** | `STORE / LOAD` | RAM ke specific addresses (0-1023) par direct data write/read. |
+| **Control Logic** | `LOOP.START` | High-speed iterative/nested logic cycles shuru karta hai. |
+| **Control Logic** | `LOOP.END` | Iteration ko securely khatam karke stack pointers clear karta hai. |
+| **Math Core** | `ADD / SUB` | Stack values ko jodne aur ghatane ka high-precision logic. |
+| **Math Core** | `MUL / DIV` | Fast Integer Multiplication aur Zero-Safe Division logic. |
+| **I/O Logic** | `<<` | **Standard Out:** Stack data ko console par display karta hai. |
+| **I/O Logic** | `>>` | **Standard In:** User se real-time integer input collect karta hai. |
+| **Interface** | `~n / ~i` | UI Theme (Single color) aur Gradient backgrounds set karta hai. |
+| **Interface** | `btn` | APK interface ke liye interactive buttons render karta hai. |
+| **Diagnostic** | `stats.show` | Live memory usage, stack depth aur performance data dikhata hai. |
+| **Hardware** | `@core.boost` | Priority Shift: Thread ko High-Performance mode mein dalta hai. |
+| **Cleanup** | `mem.purge` | RAM Purge: Junk saaf karke 0B Memory Leak maintain karta hai. |
+| **Exit** | `exit` | Safe Halt: Shutdown karke performance log (ms) dikhata hai. |
+
+---
+
+## 💻 3. Industrial Sample Script (Hybrid Logic)
+Ye script v10.0 ke UI features aur v21.0 ke persistent memory logic ka combination dikhata hai:
+
+```nf1
+// System Initialization
+brain.init |> 
+@core.boost |> 
+
+// UI & Theme Setup
+~i = gradient_blue |> 
+btn = "Run Calculation" |> 
+
+// Persistent Variable Containment (v21.0)
+SET a = 1500 |> 
+SET b = 500 |> 
+
+// Execution & Math
+GET a |> 
+GET b |> 
+ADD |>      // Stack: 2000
+PUSH 2 |> 
+MUL |>      // Stack: 4000
+
+// Industrial Output
+<< "FINAL VALIDATED RESULT: " |> 
+stats.show |> 
+mem.purge |> 
+exit |>
