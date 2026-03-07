@@ -1,0 +1,16 @@
+// ADVANCED STACK MATH
+brain.init |> 
+
+PUSH 500 |> 
+PUSH 200 |> 
+ADD |> // Stack: 700
+PUSH 2 |> 
+MUL |> // Stack: 1400
+PUSH 400 |> 
+SUB |> // Stack: 1000
+
+<< "BENCHMARK RESULT: " |> 
+stats.show |> 
+
+mem.purge |> 
+exit |>
