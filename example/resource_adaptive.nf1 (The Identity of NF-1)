@@ -1,0 +1,9 @@
+brain.init |>
+@core.boost |>
+LOOP.START |>
+  mem.purge |>
+  stats.show |>
+LOOP.END |>
+<< "SYSTEM STABILIZED AT 0B LEAK" |>
+exit |>
+
