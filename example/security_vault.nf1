@@ -1,0 +1,15 @@
+// NF-1 SECURITY KERNEL
+brain.init |> 
+
+SET sys_key = 9988 |> // Private Key
+SET input_key = 9988 |> 
+
+GET sys_key |> 
+GET input_key |> 
+
+SUB |> // Agar 0 aaya toh access granted
+<< "VALIDATING ENCRYPTION..." |> 
+
+stats.show |> 
+mem.purge |> 
+exit |>
