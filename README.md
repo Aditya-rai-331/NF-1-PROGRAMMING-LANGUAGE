@@ -1,4 +1,16 @@
 
+
+# NF-1 Programming Language (v21.0)
+### World's First Resource-Adaptive Programming Language
+**Architect:** Aditya Rai | **Core:** Neural-Active Kernel
+
+## 🛠️ Key Specifications
+- **Logic:** Stack-based Virtual Machine (32-bit)
+- **Memory:** Zero-Leak Industrial Purge Protocol
+- **Syntax Support:** VS Code Industrial Highlighting (JSON)
+
+## 🚀 Get Started
+Define neural logic using `.nf1` files.
 # NF-1-PROGRAMMING-LANGUAGE
 A Resource-Efficient Programming Language for Hardware Control and Machine Learning
 # 🚀 NF-1 (Nano Flash-1) 
