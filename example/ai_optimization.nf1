@@ -1,0 +1,15 @@
+// AUTO-OPTIMIZATION SCRIPT
+brain.init |> 
+@core.boost |> 
+
+LOOP.START |>
+  PUSH 1024 |> // Buffer size
+  STORE 0 |>   // Storing in RAM Address 0
+  LOAD 0 |>    // Loading back
+  mem.purge |> // Instant cleanup
+  << "CYCLE STABLE..." |>
+LOOP.END |>
+
+stats.show |> 
+exit |>
+
