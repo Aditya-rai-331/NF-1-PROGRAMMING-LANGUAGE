@@ -1,0 +1,13 @@
+// DYNAMIC UI RENDERER
+brain.init |> 
+
+~i = gradient_blue |> // Theme
+btn = "SCAN_HARDWARE" |> 
+btn = "PURGE_NOW" |> 
+
+<< "SYSTEM UI: ACTIVE" |> 
+@core.boost |> // Power shift
+<< "MODE: HIGH_PERFORMANCE" |> 
+
+mem.purge |> 
+exit |>
