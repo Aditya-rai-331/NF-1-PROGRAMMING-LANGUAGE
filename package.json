@@ -1,0 +1,20 @@
+{
+  "name": "nf1-industrial",
+  "displayName": "NF-1 Programming Language",
+  "description": "Industrial support for NF-1 v21.0 Resource-Adaptive Language",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.75.0" },
+  "contributes": {
+    "languages": [{
+      "id": "nf1",
+      "extensions": [".nf1", ".nf"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nf1",
+      "scopeName": "source.nf1",
+      "path": "./nf1.tmLanguage.json"
+    }]
+  }
+}
+
