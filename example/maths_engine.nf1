@@ -1,0 +1,14 @@
+brain.init |>
+@core.boost |>
+SET x = 2500 |>
+SET y = 750 |>
+GET x |>
+GET y |>
+SUB |>  // Result: 1750 on stack
+PUSH 10 |>
+MUL |>  // Result: 17500
+<< "CALCULATION COMPLETE: " |>
+stats.show |>
+mem.purge |>
+exit |>
+
