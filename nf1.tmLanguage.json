@@ -1,0 +1,50 @@
+{
+  "name": "NF-1 Programming Language",
+  "scopeName": "source.nf1",
+  "fileTypes": ["nf1", "nf"],
+  "repository": {
+    "keywords": {
+      "patterns": [{
+        "name": "keyword.control.nf1",
+        "match": "\\b(brain\\.init|LOOP\\.START|LOOP\\.END|exit|@core\\.boost|stats\\.show|mem\\.purge)\\b"
+      },
+      {
+        "name": "keyword.other.memory.nf1",
+        "match": "\\b(SET|GET|STORE|LOAD|PUSH)\\b"
+      },
+      {
+        "name": "keyword.operator.math.nf1",
+        "match": "\\b(ADD|SUB|MUL|DIV)\\b"
+      }]
+    },
+    "io_operators": {
+      "patterns": [{
+        "name": "keyword.operator.io.nf1",
+        "match": "<<|>>|\\|>"
+      }]
+    },
+    "ui_elements": {
+      "patterns": [{
+        "name": "variable.language.ui.nf1",
+        "match": "~n|~i|btn"
+      }]
+    },
+    "strings": {
+      "name": "string.quoted.double.nf1",
+      "begin": "\"",
+      "end": "\""
+    },
+    "comments": {
+      "name": "comment.line.double-slash.nf1",
+      "match": "//.*$"
+    }
+  },
+  "patterns": [
+    { "include": "#keywords" },
+    { "include": "#io_operators" },
+    { "include": "#ui_elements" },
+    { "include": "#strings" },
+    { "include": "#comments" }
+  ]
+}
+
