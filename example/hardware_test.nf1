@@ -1,0 +1,12 @@
+// LOW-LEVEL HARDWARE TEST
+brain.init |> 
+@core.boost |> 
+
+STORE 500 |> // Direct RAM Address Write
+LOAD 500 |>  // Direct RAM Address Read
+
+<< "HARDWARE LINK: STABLE" |> 
+stats.show |> 
+
+mem.purge |> // Critical Cleanup
+exit |>
