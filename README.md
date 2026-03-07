@@ -1,6 +1,6 @@
 
 
-# NF-1 Programming Language (v21.0)
+# NF-1 Programming Language (v2.0)
 ### World's First Resource-Adaptive Programming Language
 **Architect:** Aditya Rai | **Core:** Neural-Active Kernel
 
