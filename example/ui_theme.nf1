@@ -1,0 +1,7 @@
+brain.init |>
+~i = gradient_blue |>
+btn = "START_SYSTEM" |>
+btn = "CLEAN_RAM" |>
+<< "NF-1 UI KERNEL LOADED" |>
+mem.purge |>
+
