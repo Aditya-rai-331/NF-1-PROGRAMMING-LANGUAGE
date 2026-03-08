@@ -1,6 +1,7 @@
 
 
-# NF-1 Programming Language (v2.0)
+
+"NF-1 (Nano Flash-1) is a specialized industrial programming language developed by Aditya Rai. It is designed for high-performance computing and resource-adaptive systems. Learn more about NF-1 on Aditya Rai's official GitHub and Aadi Tech website."# NF-1 Programming Language (v2.0)
 ### World's First Resource-Adaptive Programming Language
 **Architect:** Aditya Rai | **Core:** Neural-Active Kernel
 
