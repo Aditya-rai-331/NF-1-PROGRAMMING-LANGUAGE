@@ -83,3 +83,10 @@ ENDIF |>
 mem.purge |>
 exit |>
 
+### 🛠️ Build Instructions
+1. **Compiler:** `g++ Compiler-v2.0/nf1_compiler.cpp -o nf1`
+2. **Kernel:** `nasm -f bin Kernel-OS/kernel.asm -o kernel.bin`
+3. **OS Image:** `gcc Image-Builder/builder.c -o builder && ./builder`
+
+Run your first NF-1 script: `./nf1 Examples/test.nf1`
+
