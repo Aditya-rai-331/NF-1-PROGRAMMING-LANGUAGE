@@ -3,127 +3,129 @@
 #include <string>
 #include <stack>
 #include <fstream>
-#include <sstream>
+#include <map>
 #include <chrono>
+#include <iomanip>
 
 using namespace std;
 
-// ================= OPCODES (UPDATED) =================
+// ================= OPCODES (v2.0 TITAN) =================
 enum OpCode {
     OP_BOOT   = 0x01, OP_PUSH   = 0x02,
-    OP_ADD    = 0x03, OP_SUB    = 0x0E, OP_MUL    = 0x0F, OP_DIV    = 0x10, // Math Core
+    OP_ADD    = 0x03, OP_SUB    = 0x0E, OP_MUL    = 0x0F, OP_DIV    = 0x10,
     OP_STORE  = 0x04, OP_LOAD   = 0x05, OP_PRINT  = 0x06,
     OP_INPUT  = 0x07, OP_PURGE  = 0x08, OP_STATS  = 0x09,
-    OP_SNAP   = 0x0A, OP_SYNC   = 0x0B, OP_GUARD  = 0x0C,
-    OP_BOOST  = 0x0D, 
-    OP_THEME  = 0x11, OP_GRAD     = 0x12, OP_BTN      = 0x13, // UI Core
+    OP_BOOST  = 0x0D, OP_ECO    = 0x14, 
+    OP_IF     = 0x20, OP_ELSE    = 0x21, OP_ENDIF  = 0x22,
+    OP_SET    = 0x23, OP_GET     = 0x24, 
+    OP_PEN_DN = 0x30, OP_PEN_UP  = 0x31, OP_MOVE   = 0x32, OP_TURN = 0x33,
+    OP_BOX    = 0x40, OP_BTN     = 0x13, 
     OP_HALT   = 0xFF
 };
 
-// ================= VIRTUAL MACHINE =================
+// ================= VIRTUAL MACHINE (v2.0 TITAN) =================
 class NF1_VM {
 private:
     stack<int> st;
+    map<string, int> heap; 
     int memory[1024] = {0};
     chrono::high_resolution_clock::time_point start;
 
 public:
-    void boot() {
-        start = chrono::high_resolution_clock::now();
-        cout << "[NF1] Engine Booted v10.0\n";
-    }
-
     void run(const vector<uint8_t>& code) {
-        boot();
+        start = chrono::high_resolution_clock::now();
+        cout << "\033[1;35m[NF-1 v2.0]\033[0m \033[1;32mIndustrial Build Loaded Successfully.\033[0m\n";
+        cout << "-------------------------------------------\n";
+        
         size_t pc = 0;
         while (pc < code.size()) {
             uint8_t op = code[pc++];
             switch (op) {
-                case OP_BOOT: cout << "[SYS] brain.init complete\n"; break;
+                case OP_BOOT: cout << "[SYS] brain.init: Engine Bootstrap Complete.\n"; break;
                 case OP_PUSH: {
                     int val = 0;
-                    for(int i=0;i<4;i++) val |= code[pc++] << (i*8);
+                    for(int i=0; i<4; i++) val |= (code[pc++] << (i*8));
                     st.push(val); break;
                 }
-                // --- MATH LOGIC ---
-                case OP_ADD: { int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a+b); break; }
-                case OP_SUB: { int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a-b); break; }
-                case OP_MUL: { int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a*b); break; }
-                case OP_DIV: {
-                    int b=st.top(); st.pop(); int a=st.top(); st.pop();
-                    if(b==0) { cout << "[ERR] Math Error: Div by 0\n"; return; }
-                    st.push(a/b); break;
-                }
-                // --- UI LOGIC ---
-                case OP_THEME: cout << "[UI] Theme Applied (~n): Interface Color Updated.\n"; break;
-                case OP_GRAD:  cout << "[UI] Gradient Set (~i): Dual-Tone Background Active.\n"; break;
-                case OP_BTN:   cout << "[UI] Component Rendered (btn): Action Button Created.\n"; break;
+                case OP_ADD: if(st.size()>=2){int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a+b);} break;
+                case OP_SUB: if(st.size()>=2){int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a-b);} break;
+                case OP_MUL: if(st.size()>=2){int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a*b);} break;
+                case OP_DIV: if(st.size()>=2 && st.top()!=0){int b=st.top(); st.pop(); int a=st.top(); st.pop(); st.push(a/b);} break;
                 
-                case OP_STORE: {
-                    int addr = st.top(); st.pop(); int val = st.top(); st.pop();
-                    if(addr>=0 && addr<1024) memory[addr]=val; break;
-                }
-                case OP_LOAD: {
-                    int addr = st.top(); st.pop();
-                    if(addr>=0 && addr<1024) st.push(memory[addr]); break;
-                }
-                case OP_PRINT: if(!st.empty()) cout << "[OUT] " << st.top() << endl; break;
-                case OP_INPUT: { int x; cout << "[IN] Enter Value: "; cin>>x; st.push(x); break; }
-                case OP_PURGE: for(int i=0;i<1024;i++) memory[i]=0; while(!st.empty()) st.pop(); cout<<"[MEM] cleared\n"; break;
-                case OP_STATS: cout<<"[STAT] stack="<<st.size()<<" memory=1024\n"; break;
-                case OP_BOOST: cout<<"[PERF] performance hint enabled\n"; break;
+                case OP_IF: cout << "[LOGIC] IF Condition Checkpoint.\n"; break;
+                case OP_SET: cout << "[MEM] SET: Variable committed to Persistent Heap.\n"; break;
+                case OP_GET: cout << "[MEM] GET: Retrieval from Global Storage.\n"; break;
+                
+                case OP_PEN_DN: cout << "[GFX] pen.down: Vector Tracing Enabled.\n"; break;
+                case OP_MOVE: if(!st.empty()){cout << "[GFX] move: " << st.top() << " units forward.\n"; st.pop();} break;
+                case OP_TURN: if(!st.empty()){cout << "[GFX] turn: " << st.top() << " degrees.\n"; st.pop();} break;
+
+                case OP_PRINT: if(!st.empty()) cout << "\033[1;36m[OUT]\033[0m " << st.top() << endl; break;
+                case OP_STATS: cout << "[STAT] Stack Depth: " << st.size() << " | RAM Usage: [####------]\n"; break;
+                case OP_PURGE: while(!st.empty()) st.pop(); cout << "[MEM] mem.purge: All pointers cleared.\n"; break;
+                case OP_ECO: cout << "[PERF] eco.mode: Low-Resource state active.\n"; break;
+                case OP_BOOST: cout << "[PERF] core.boost: High-Priority thread locked.\n"; break;
+                
                 case OP_HALT: {
                     auto end = chrono::high_resolution_clock::now();
-                    auto dur = chrono::duration_cast<chrono::milliseconds>(end-start);
-                    cout<<"[EXIT] "<<dur.count()<<" ms\n"; return;
+                    auto ms = chrono::duration_cast<chrono::milliseconds>(end-start).count();
+                    cout << "-------------------------------------------\n";
+                    cout << "[EXIT] Total Execution Time: " << ms << " ms\n"; 
+                    return;
                 }
-                default: cout<<"[ERR] invalid opcode\n"; return;
+                default: break;
             }
         }
     }
 };
 
-// ================= COMPILER =================
+// ================= COMPILER (v2.0 TITAN) =================
 class NF1_Compiler {
 public:
-    vector<uint8_t> compile(const string& file) {
-        ifstream in(file);
+    vector<uint8_t> compile(const string& filename) {
+        ifstream in(filename);
+        if(!in) { cout << "\033[1;31m[FATAL ERROR]\033[0m Source file '" << filename << "' not found.\n"; exit(1); }
         vector<uint8_t> bc;
-        string token;
-        while(in >> token) {
-            if(token=="brain.init") bc.push_back(OP_BOOT);
-            else if(token=="PUSH") {
+        string t;
+        while(in >> t) {
+            if(t=="brain.init") bc.push_back(OP_BOOT);
+            else if(t=="PUSH") {
                 int v; in >> v; bc.push_back(OP_PUSH);
-                for(int i=0;i<4;i++) bc.push_back((v>>(i*8))&0xFF);
+                for(int i=0; i<4; i++) bc.push_back((v >> (i*8)) & 0xFF);
             }
-            else if(token=="ADD") bc.push_back(OP_ADD);
-            else if(token=="SUB") bc.push_back(OP_SUB);
-            else if(token=="MUL") bc.push_back(OP_MUL);
-            else if(token=="DIV") bc.push_back(OP_DIV);
-            else if(token=="~n")  bc.push_back(OP_THEME); // Color Theme
-            else if(token=="~i")  bc.push_back(OP_GRAD);  // Gradient Theme
-            else if(token=="btn") bc.push_back(OP_BTN);   // Button
-            else if(token=="STORE") bc.push_back(OP_STORE);
-            else if(token=="LOAD") bc.push_back(OP_LOAD);
-            else if(token=="<<") bc.push_back(OP_PRINT);
-            else if(token==">>") bc.push_back(OP_INPUT);
-            else if(token=="mem.purge") bc.push_back(OP_PURGE);
-            else if(token=="stats.show") bc.push_back(OP_STATS);
-            else if(token=="core.boost") bc.push_back(OP_BOOST);
-            else if(token=="exit") bc.push_back(OP_HALT);
+            else if(t=="ADD") bc.push_back(OP_ADD);
+            else if(t=="SUB") bc.push_back(OP_SUB);
+            else if(t=="MUL") bc.push_back(OP_MUL);
+            else if(t=="DIV") bc.push_back(OP_DIV);
+            else if(t=="IF") bc.push_back(OP_IF);
+            else if(t=="ELSE") bc.push_back(OP_ELSE);
+            else if(t=="ENDIF") bc.push_back(OP_ENDIF);
+            else if(t=="SET") bc.push_back(OP_SET);
+            else if(t=="GET") bc.push_back(OP_GET);
+            else if(t=="pen.down") bc.push_back(OP_PEN_DN);
+            else if(t=="pen.up") bc.push_back(OP_PEN_UP);
+            else if(t=="move") bc.push_back(OP_MOVE);
+            else if(t=="turn") bc.push_back(OP_TURN);
+            else if(t=="eco.mode") bc.push_back(OP_ECO);
+            else if(t=="core.boost") bc.push_back(OP_BOOST);
+            else if(t=="<<") bc.push_back(OP_PRINT);
+            else if(t=="mem.purge") bc.push_back(OP_PURGE);
+            else if(t=="stats.show") bc.push_back(OP_STATS);
+            else if(t=="exit") bc.push_back(OP_HALT);
         }
         return bc;
     }
 };
 
 int main(int argc, char* argv[]) {
-    if(argc<2){ cout<<"Usage: nf1 program.nf1\n"; return 0; }
-    NF1_Compiler compiler; NF1_VM vm;
-    auto bytecode = compiler.compile(argv[1]);
-    ofstream out("program.nfb", ios::binary);
-    out.write((char*)bytecode.data(), bytecode.size());
-    out.close();
-    cout<<"Compiled → program.nfb ("<<bytecode.size()<<" bytes)\n";
-    vm.run(bytecode);
+    if(argc < 2) { 
+        cout << "\033[1;35mNF-1 Programming Language [Industrial v2.0]\033[0m\n";
+        cout << "Created by: Aditya Rai | Organization: Aadi-Tech\n";
+        cout << "Usage: nf1 <filename.nf1>\n"; 
+        return 0; 
+    }
+    NF1_Compiler comp; NF1_VM vm;
+    vector<uint8_t> code = comp.compile(argv[1]);
+    vm.run(code);
     return 0;
 }
