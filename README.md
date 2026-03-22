@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ## 🌌 Overview
-**NF-1 (Nano Flash-1)** is a high-performance, stack-based programming language engineered by **Aditya Rai (Aadi-Tech Enterprises)**. It is specifically optimized for **Resource-Zero Computing**, enabling complex logic and vector graphics on legacy hardware with 0B memory leaks.
+**NF-1 (neural foundation-1)** is a high-performance, stack-based programming language engineered by **Aditya Rai (Aadi-Tech Enterprises)**. It is specifically optimized for **Resource-Zero Computing**, enabling complex logic and vector graphics on legacy hardware with 0B memory leaks.
 
 > "Efficiency is not an option; it's the core architecture." — Aditya Rai
 
