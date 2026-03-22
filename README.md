@@ -46,6 +46,15 @@ The NF-1 v2.0 engine operates on a **Neural-Active Kernel** that manages a 32-bi
 | `ENDIF` | Branch | Securely terminates the conditional sequence. |
 
 ---
+MY OFFICIAL WEBSITE: https://sites.google.com/view/aadi-tech/home
+official web compiler:https://sites.google.com/view/nf-1-programming-language/nf-1-by-aditya-rai?authuser=0
+---
+THERE IS MY POST LINKS:
+Source: Medium https://share.google/vAElDb58Z4wELmJLT
+https://dev.to/aditya_rai_2f211fe3d3a90f/why-im-building-nf-1-a-language-for-the-resource-zero-generation-at-14-2ji8
+https://forem.com/aditya_rai_2f211fe3d3a90f
+https://nf-1lang.hashnode.dev/i-am-14-and-i-built-a-minimalist-programming-language-nf-1-for-low-end-hardware
+---
 
 ## 💻 Industrial Sample Script
 ```nf1
