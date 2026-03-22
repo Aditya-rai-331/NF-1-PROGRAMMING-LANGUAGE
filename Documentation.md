@@ -1,4 +1,4 @@
-# 🚀 NF-1 (Nano Flash-1) | Industrial v22.0 [Quantum-Lite]
+# 🚀 NF-1 (Nano Flash-1) | Industrial v2.0 [Quantum-Lite]
 # Official Technical Specification | Enterprise Edition
 # Lead Architect: Aditya Rai | Organization: Aadi-Tech Enterprises
 # Location: Laksar, Uttarakhand, India
